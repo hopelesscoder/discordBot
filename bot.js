@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const ytdl = require('ytdl-core');
 const bot = new Discord.Client();
 
 bot.on('ready', () => {
@@ -28,13 +29,29 @@ bot.on('message', msg => {
 	  //msg.channel.send("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	   var voiceChannel = msg.member.voiceChannel;
 		voiceChannel.join().then(connection => {
-		  const dispatcher = connection.play('https://www.myinstants.com/media/sounds/germano_mosconi-ma-che-oh.mp3',  { volume: 1.0 });
+		   const dispatcher = connection.play('https://www.myinstants.com/media/sounds/germano_mosconi-ma-che-oh.mp3');
 		  dispatcher.on('finish', finish => voiceChannel.leave());
 		}).catch(err => console.log(err));
 	  
 	  
-  }
+  }else if (message.content === '!play') {
+		if (message.channel.type !== 'text') return;
+
+		const voiceChannel = message.member.voice.channel;
+
+		if (!voiceChannel) {
+			return message.reply('please join a voice channel first!');
+		}
+
+		voiceChannel.join().then(connection => {
+			const stream = ytdl('https://www.youtube.com/watch?v=D57Y1PruTlw', { filter: 'audioonly' });
+			const dispatcher = connection.play(stream);
+
+			dispatcher.on('finish', () => voiceChannel.leave());
+		});
+	}
 });
+
 
  
 
