@@ -14,7 +14,7 @@ bot.on('ready', () => {
 bot.on('message', msg => {
   if (msg.content === '!ping') {
     msg.reply('pong');
-    msg.channel.send('pong');
+    //msg.channel.send('pong');
 
   } else if (msg.content.startsWith('!kick')) {
     if (msg.mentions.users.size) {
@@ -25,7 +25,14 @@ bot.on('message', msg => {
     }
   } else if (msg.content === '!cit') {
 	  msg.reply("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
-	  msg.channel.send("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
+	  //msg.channel.send("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
+	   var voiceChannel = message.member.voiceChannel
+		voiceChannel.join().then(connection => {
+		  const dispatcher = connection.play('https://www.myinstants.com/media/sounds/germano_mosconi-ma-che-oh.mp3');
+		  dispatcher.on('end', end => voiceChannel.leave());
+		}).catch(err => console.log(err))
+	  
+	  
   }
 });
 
