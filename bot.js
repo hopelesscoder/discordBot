@@ -28,10 +28,7 @@ bot.on('message', msg => {
 	  //msg.channel.send("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	   var voiceChannel = msg.member.voiceChannel;
 		voiceChannel.join().then(connection => {
-			const broadcast = client.voice.createBroadcast();
-			broadcast.play('https://www.myinstants.com/media/sounds/germano_mosconi-ma-che-oh.mp3');
-			connection.play(broadcast);
-		  //const dispatcher = connection.play('https://www.myinstants.com/media/sounds/germano_mosconi-ma-che-oh.mp3');
+		  const dispatcher = connection.play('germano_mosconi-ma-che-oh.mp3');
 		  dispatcher.on('end', end => voiceChannel.leave());
 		}).catch(err => console.log(err));
 	  
