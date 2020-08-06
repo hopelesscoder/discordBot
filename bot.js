@@ -28,7 +28,7 @@ bot.on('message', msg => {
 	  //msg.channel.send("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	   var voiceChannel = msg.member.voiceChannel;
 		voiceChannel.join().then(connection => {
-		  const dispatcher = connection.play('germano_mosconi-ma-che-oh.mp3');
+		  const dispatcher = connection.play('germano_mosconi-ma-che-oh.mp3', { volume: 1.0 });
 		  dispatcher.on('end', end => voiceChannel.leave());
 		}).catch(err => console.log(err));
 	  
