@@ -29,20 +29,24 @@ bot.on('message', msg => {
 	  //msg.channel.send("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	   var voiceChannel = msg.member.voice.channel;
 		voiceChannel.join().then(connection => {
+			console.log('In voice channel!');
 		   const dispatcher = connection.play('https://www.myinstants.com/media/sounds/germano_mosconi-ma-che-oh.mp3');
+		   console.log('before onfinish!');
 		  dispatcher.on('finish', finish => voiceChannel.leave());
 		}).catch(err => console.log(err));
+	  console.log('After voicechannel');
 	  
-	  
-  }else if (msg.content === '!citStream') {
+  }else if (msg.content === '!citEnd') {
 	  msg.reply("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	  //msg.channel.send("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	   var voiceChannel = msg.member.voice.channel;
 		voiceChannel.join().then(connection => {
-		   const dispatcher = connection.playStream('https://www.myinstants.com/media/sounds/germano_mosconi-ma-che-oh.mp3');
+			console.log('In voice channel!');
+		   const dispatcher = connection.play('https://www.myinstants.com/media/sounds/germano_mosconi-ma-che-oh.mp3');
+		   console.log('before onEnd!');
 		  dispatcher.on('finish', finish => voiceChannel.leave());
 		}).catch(err => console.log(err));
-	  
+	  console.log('After voicechannel');
 	  
   }
   /*else if (message.content === '!play') {
