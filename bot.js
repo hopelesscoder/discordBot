@@ -34,6 +34,16 @@ bot.on('message', msg => {
 		}).catch(err => console.log(err));
 	  
 	  
+  }else if (msg.content === '!citStream') {
+	  msg.reply("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
+	  //msg.channel.send("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
+	   var voiceChannel = msg.member.voiceChannel;
+		voiceChannel.join().then(connection => {
+		   const dispatcher = connection.playStream('https://www.myinstants.com/media/sounds/germano_mosconi-ma-che-oh.mp3');
+		  dispatcher.on('finish', finish => voiceChannel.leave());
+		}).catch(err => console.log(err));
+	  
+	  
   }else if (message.content === '!play') {
 		if (message.channel.type !== 'text') return;
 
