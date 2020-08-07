@@ -33,7 +33,8 @@ bot.on('message', msg => {
 		   const dispatcher = connection.play('https://www.myinstants.com/media/sounds/germano_mosconi-ma-che-oh.mp3', {volume: 1,});
 		   console.log('before onfinish!');
 		  //dispatcher.on('finish', finish => voiceChannel.leave());
-		  dispatcher.on('finish', finish => console.log('Finished playing!'));
+		  dispatcher.on('error', error => console.log('Error: ' + error));
+		  dispatcher.on('failed', failed => console.log('Failed: ' + failed));
 		  
 		}).catch(err => console.log(err));
 	  console.log('After voicechannel');
@@ -47,7 +48,8 @@ bot.on('message', msg => {
 		   const dispatcher = connection.play('germano_mosconi-ma-che-oh.mp3', {volume: 1,});
 		   console.log('before onfinish!');
 		  //dispatcher.on('finish', finish => voiceChannel.leave());
-		  dispatcher.on('finish', finish => console.log('Finished playing!'));
+		  dispatcher.on('error', error => console.log('Error: ' + error));
+		  dispatcher.on('failed', failed => console.log('Failed: ' + failed));
 		  
 		}).catch(err => console.log(err));
 	  console.log('After voicechannel');
