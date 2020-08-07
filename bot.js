@@ -32,9 +32,9 @@ bot.on('message', msg => {
 		voiceChannel.join().then(connection => {
 			console.log('In voice channel!');
 		   const dispatcher = connection.play('https://www.myinstants.com/media/sounds/germano_mosconi-ma-che-oh.mp3');
-		   console.log('dispatcher volume: '+ volume);
-		   console.log('dispatcher paused: '+ paused);
-		   console.log('dispatcher player: '+ player);
+		   console.log('dispatcher volume: '+ dispatcher.volume);
+		   console.log('dispatcher paused: '+ dispatcher.paused);
+		   console.log('dispatcher player: '+ dispatcher.player);
 		   console.log('before onfinish!');
 		  //dispatcher.on('finish', finish => voiceChannel.leave());
 		  dispatcher.on('error', error => console.log('Error: ' + error));
