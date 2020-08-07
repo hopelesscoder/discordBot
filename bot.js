@@ -31,11 +31,16 @@ bot.on('message', msg => {
 	   var voiceChannel = msg.member.voice.channel;
 		voiceChannel.join().then(connection => {
 			console.log('In voice channel!');
-		   const dispatcher = connection.play('https://www.myinstants.com/media/sounds/germano_mosconi-ma-che-oh.mp3', {volume: 1,});
+		   const dispatcher = connection.play('https://www.myinstants.com/media/sounds/germano_mosconi-ma-che-oh.mp3');
+		   console.log('dispatcher volume: '+ volume);
+		   console.log('dispatcher paused: '+ paused);
+		   console.log('dispatcher player: '+ player);
 		   console.log('before onfinish!');
 		  //dispatcher.on('finish', finish => voiceChannel.leave());
 		  dispatcher.on('error', error => console.log('Error: ' + error));
-		  dispatcher.on('failed', failed => console.log('Failed: ' + failed));
+		  dispatcher.on('start', start => console.log('Start: ' + start));
+		  dispatcher.on('speaking', speaking => console.log('Speaking: ' + speaking));
+		  dispatcher.on('debug', debug => console.log('Debug: ' + debug));
 		  
 		}).catch(err => console.log(err));
 	  console.log('After voicechannel');
