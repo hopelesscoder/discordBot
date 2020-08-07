@@ -61,7 +61,7 @@ bot.on('message', msg => {
 		   const dispatcher = connection.play(randomAudio);
 		   console.log('dispatcher volume: '+ dispatcher.volume);
 		   console.log('dispatcher paused: '+ dispatcher.paused);
-		  if(connection.listenerCount('disconnect') == 0){
+		  if(connection.listenerCount('disconnect') <= 1){
 			  connection.on('disconnect', disconnect => msg.channel.send("Mi sono disconnesso dalla chat vocale"));
 		  }
 		   console.log('listenerCount = '+ connection.listenerCount('disconnect'));
