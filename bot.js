@@ -51,7 +51,6 @@ bot.on('message', msg => {
     }
   }*/ 
   else if (msg.content === '!help') {
-    if (msg.mentions.users.size) {
       msg.reply('Scrivi !cit per ricevere un audio di Mosconi');
   } else if (msg.content === '!cit') {
 	  //msg.reply("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
@@ -117,7 +116,6 @@ bot.on('message', msg => {
 	  console.log('After voicechannel');
 	  
   }
- }
 });
 
 //Stored in config vars on heroku
