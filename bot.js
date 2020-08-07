@@ -61,7 +61,7 @@ bot.on('message', msg => {
 	   var voiceChannel = msg.member.voice.channel;
 		voiceChannel.join().then(connection => {
 			console.log('In voice channel!');
-		   const dispatcher = connection.play(ytdl('https://www.youtube.com/watch?v=f3wsxbMbi5M'), { type: 'opus' });;
+		   const dispatcher = connection.play(ytdl('https://www.youtube.com/watch?v=f3wsxbMbi5M', { filter: 'audioonly'}));;
 		   console.log('before onfinish!');
 		  //dispatcher.on('finish', finish => voiceChannel.leave());
 		  dispatcher.on('error', error => console.log('Error: ' + error));
