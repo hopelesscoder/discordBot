@@ -3,14 +3,37 @@ const ytdl = require('ytdl-core');
 
 const bot = new Discord.Client();
 
+var audioArray = [
+	"https://www.myinstants.com/media/sounds/germano_mosconi-ma-che-oh.mp3",
+	"https://www.myinstants.com/media/sounds/germano_mosconi-mi-sa-che-non-mi-incazzo.mp3",
+	"https://www.myinstants.com/media/sounds/germanomosconi_aspetasecondo.mp3",
+	"https://www.myinstants.com/media/sounds/germano_mosconi-mona-porta.mp3",
+	"https://www.myinstants.com/media/sounds/germanomosconi_orco.mp3",
+	"https://www.myinstants.com/media/sounds/germanomosconi_telefono_1.mp3",
+	"https://www.myinstants.com/media/sounds/germanomosconi_nopossibile.mp3",
+	"https://www.myinstants.com/media/sounds/germanomosconi_cazzoderumore.mp3",
+	"https://www.myinstants.com/media/sounds/germanomosconi_punhospacotesta.mp3",
+	"https://www.myinstants.com/media/sounds/germanomosconi_telefono.mp3",
+	"https://www.myinstants.com/media/sounds/germanomosconi_vafaculo.mp3",
+	"https://www.myinstants.com/media/sounds/germanomosconi_porta.mp3",
+	"https://www.myinstants.com/media/sounds/untitled-online-audio-converter_MBamWbe.mp3",
+	"https://www.myinstants.com/media/sounds/germanomosconi_vafaculo_1.mp3",
+	"https://www.myinstants.com/media/sounds/portanna-la-madonna.mp3",
+	"https://www.myinstants.com/media/sounds/ma-non-si-riesce-a-capire-un-cazzo-128-kbps.mp3",
+	"https://www.myinstants.com/media/sounds/germano-mosconi-e-le-carte-con-la-colla-attenzione-contiene-bestemmie-audiotrimmer.mp3",
+	"https://www.myinstants.com/media/sounds/possible-imbecill.mp3",
+	"https://www.myinstants.com/media/sounds/spetta-che-me-calmo.mp3",
+	"https://www.myinstants.com/media/sounds/non-venite-dentro.mp3",
+	"https://www.myinstants.com/media/sounds/toccaferroitled.mp3",
+	"https://www.myinstants.com/media/sounds/colla.mp3",
+	"https://www.myinstants.com/media/sounds/colla_tCTHVKL.mp3"
+	];
+
 bot.on('ready', () => {
 
     console.log('I am ready!');
+	console.info(`Logged in as ${bot.user.tag}!`);
 
-});
-
-bot.on('ready', () => {
-  console.info(`Logged in as ${bot.user.tag}!`);
 });
 
 bot.on('message', msg => {
@@ -18,23 +41,28 @@ bot.on('message', msg => {
     msg.reply('pong');
     //msg.channel.send('pong');
 
-  } else if (msg.content.startsWith('!kick')) {
+  } 
+  /*else if (msg.content.startsWith('!kick')) {
     if (msg.mentions.users.size) {
       const taggedUser = msg.mentions.users.first();
       msg.channel.send(`You wanted to kick: ${taggedUser.username}`);
     } else {
       msg.reply('Please tag a valid user!');
     }
+  }*/ 
+  else if (msg.content === '!help') {
+    if (msg.mentions.users.size) {
+      msg.reply('Scrivi !cit per ricevere un audio di Mosconi');
   } else if (msg.content === '!cit') {
-	  msg.reply("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
+	  //msg.reply("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	  //msg.channel.send("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	   var voiceChannel = msg.member.voice.channel;
 		voiceChannel.join().then(connection => {
 			console.log('In voice channel!');
-		   const dispatcher = connection.play('https://www.myinstants.com/media/sounds/germano_mosconi-ma-che-oh.mp3');
+		   const randomAudio = array[Math.floor(Math.random() * audioArray.length)];
+		   const dispatcher = connection.play(randomAudio);
 		   console.log('dispatcher volume: '+ dispatcher.volume);
 		   console.log('dispatcher paused: '+ dispatcher.paused);
-		   console.log('before onfinish!');
 		  //dispatcher.on('finish', finish => voiceChannel.leave());
 		  dispatcher.on('error', error => console.log('Error: ' + error));
 		  dispatcher.on('start', start => console.log('Start: ' + start));
@@ -44,7 +72,8 @@ bot.on('message', msg => {
 		}).catch(err => console.log(err));
 	  console.log('After voicechannel');
 	  
-  }else if (msg.content === '!citLocal') {
+  }
+  /*else if (msg.content === '!citLocal') {
 	  msg.reply("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	  //msg.channel.send("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	   var voiceChannel = msg.member.voice.channel;
@@ -59,8 +88,9 @@ bot.on('message', msg => {
 		}).catch(err => console.log(err));
 	  console.log('After voicechannel');
 	  
-  }else if (msg.content === '!citYt') {
-	  msg.reply("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
+  }*/
+  else if (msg.content === '!citYt') {
+	  //msg.reply("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	  //msg.channel.send("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	   var voiceChannel = msg.member.voice.channel;
 		voiceChannel.join().then(connection => {
@@ -87,27 +117,7 @@ bot.on('message', msg => {
 	  console.log('After voicechannel');
 	  
   }
-  /*else if (message.content === '!play') {
-		if (message.channel.type !== 'text') return;
-
-		const voiceChannel = message.member.voice.channel;
-
-		if (!voiceChannel) {
-			return message.reply('please join a voice channel first!');
-		}
-
-		voiceChannel.join().then(connection => {
-			const stream = ytdl('https://www.youtube.com/watch?v=D57Y1PruTlw', { filter: 'audioonly' });
-			const dispatcher = connection.play(stream);
-
-			dispatcher.on('finish', () => voiceChannel.leave());
-		});
-	}*/
 });
 
-
- 
-
-// THIS  MUST  BE  THIS  WAY
-
+//Stored in config vars on heroku
 bot.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
