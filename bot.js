@@ -117,6 +117,7 @@ bot.on('message', msg => {
 	  console.log('After voicechannel');
 	  
   }
+ }
 });
 
 //Stored in config vars on heroku
