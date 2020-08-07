@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const ytdl = require('ytdl-core');
+//const ytdl = require('ytdl-core');
 const bot = new Discord.Client();
 
 bot.on('ready', () => {
@@ -44,7 +44,8 @@ bot.on('message', msg => {
 		}).catch(err => console.log(err));
 	  
 	  
-  }else if (message.content === '!play') {
+  }
+  /*else if (message.content === '!play') {
 		if (message.channel.type !== 'text') return;
 
 		const voiceChannel = message.member.voice.channel;
@@ -59,7 +60,7 @@ bot.on('message', msg => {
 
 			dispatcher.on('finish', () => voiceChannel.leave());
 		});
-	}
+	}*/
 });
 
 
