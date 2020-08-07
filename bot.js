@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 //const ytdl = require('ytdl-core');
+const ytdl = require('ytdl-core-discord');
+
 const bot = new Discord.Client();
 
 bot.on('ready', () => {
@@ -54,7 +56,22 @@ bot.on('message', msg => {
 		}).catch(err => console.log(err));
 	  console.log('After voicechannel');
 	  
-  }else if (msg.content === '!citEnd') {
+  }else if (msg.content === '!citYt') {
+	  msg.reply("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
+	  //msg.channel.send("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
+	   var voiceChannel = msg.member.voice.channel;
+		voiceChannel.join().then(connection => {
+			console.log('In voice channel!');
+		   const dispatcher = connection.play(ytdl('https://www.youtube.com/watch?v=f3wsxbMbi5M'), { type: 'opus' });;
+		   console.log('before onfinish!');
+		  //dispatcher.on('finish', finish => voiceChannel.leave());
+		  dispatcher.on('error', error => console.log('Error: ' + error));
+		  dispatcher.on('failed', failed => console.log('Failed: ' + failed));
+		  
+		}).catch(err => console.log(err));
+	  console.log('After voicechannel');
+	  
+  else if (msg.content === '!citEnd') {
 	  msg.reply("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	  //msg.channel.send("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	   var voiceChannel = msg.member.voice.channel;
