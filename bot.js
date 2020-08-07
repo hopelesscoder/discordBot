@@ -56,22 +56,19 @@ bot.on('message', msg => {
 	  //msg.reply("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	  //msg.channel.send("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	   var voiceChannel = msg.member.voice.channel;
-		voiceChannel.join().then(connection => {
-			console.log('In voice channel!');
+	   voiceChannel.join().then(connection => {
 		   const randomAudio = audioArray[Math.floor(Math.random() * audioArray.length)];
 		   const dispatcher = connection.play(randomAudio);
 		   console.log('dispatcher volume: '+ dispatcher.volume);
 		   console.log('dispatcher paused: '+ dispatcher.paused);
-		  connection.on('disconnect', msg.channel.send("Mi sono disconnesso dalla chat vocale"));
+		  connection.on('disconnect', disconnect => msg.channel.send("Mi sono disconnesso dalla chat vocale"));
 		  //dispatcher.on('finish', finish => voiceChannel.leave());
 		  dispatcher.on('error', error => console.log('Error: ' + error));
 		  dispatcher.on('start', start => console.log('Start: ' + start));
 		  //dispatcher.on('speaking', speaking => console.log('Speaking: ' + speaking));
 		  dispatcher.on('debug', debug => console.log('Debug: ' + debug));
 		  
-		}).catch(err => console.log(err));
-	  console.log('After voicechannel');
-	  
+		}).catch(err => console.log(err));	  
   }
   /*else if (msg.content === '!citLocal') {
 	  msg.reply("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
@@ -89,7 +86,7 @@ bot.on('message', msg => {
 	  console.log('After voicechannel');
 	  
   }*/
-  else if (msg.content === '!citYt') {
+  /*else if (msg.content === '!citYt') {
 	  //msg.reply("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	  //msg.channel.send("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	   var voiceChannel = msg.member.voice.channel;
@@ -104,18 +101,16 @@ bot.on('message', msg => {
 		}).catch(err => console.log(err));
 	  console.log('After voicechannel');
 	  
-  }else if (msg.content === '!citEnd') {
-	  msg.reply("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
+  }*/
+  else if (msg.content === '!citEnd') {
+	  //msg.reply("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	  //msg.channel.send("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	   var voiceChannel = msg.member.voice.channel;
-		voiceChannel.join().then(connection => {
-			console.log('In voice channel!');
-		   const dispatcher = connection.play('https://www.myinstants.com/media/sounds/germano_mosconi-ma-che-oh.mp3');
-		   console.log('before onEnd!');
+	   voiceChannel.join().then(connection => {
+		   const randomAudio = audioArray[Math.floor(Math.random() * audioArray.length)];
+		   const dispatcher = connection.play(randomAudio);
 		  dispatcher.on('finish', finish => voiceChannel.leave());
-		}).catch(err => console.log(err));
-	  console.log('After voicechannel');
-	  
+		}).catch(err => console.log(err));	  
   }
 });
 
