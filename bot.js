@@ -61,12 +61,15 @@ bot.on('message', msg => {
 		   const dispatcher = connection.play(randomAudio);
 		   console.log('dispatcher volume: '+ dispatcher.volume);
 		   console.log('dispatcher paused: '+ dispatcher.paused);
-		  connection.once('disconnect', disconnect => msg.channel.send("Mi sono disconnesso dalla chat vocale"));
+		  if(connection.listenerCount('disconnect') == 0){
+			  connection.on('disconnect', disconnect => msg.channel.send("Mi sono disconnesso dalla chat vocale"));
+		  }
+		   console.log('listenerCount = '+ connection.listenerCount('disconnect'));
 		  //dispatcher.on('finish', finish => voiceChannel.leave());
-		  dispatcher.once('error', error => console.log('Error: ' + error));
-		  dispatcher.once('start', start => console.log('Start: ' + start));
+		  dispatcher.on('error', error => console.log('Error: ' + error));
+		  dispatcher.on('start', start => console.log('Start: ' + start));
 		  //dispatcher.on('speaking', speaking => console.log('Speaking: ' + speaking));
-		  dispatcher.once('debug', debug => console.log('Debug: ' + debug));
+		  dispatcher.on('debug', debug => console.log('Debug: ' + debug));
 		  
 		}).catch(err => console.log(err));	  
   }
@@ -109,7 +112,7 @@ bot.on('message', msg => {
 	   voiceChannel.join().then(connection => {
 		   const randomAudio = audioArray[Math.floor(Math.random() * audioArray.length)];
 		   const dispatcher = connection.play(randomAudio);
-		  dispatcher.once('finish', finish => voiceChannel.leave());
+		  dispatcher.on('finish', finish => voiceChannel.leave());
 		}).catch(err => console.log(err));	  
   }
 });
