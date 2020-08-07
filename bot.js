@@ -58,7 +58,7 @@ bot.on('message', msg => {
 	   var voiceChannel = msg.member.voice.channel;
 		voiceChannel.join().then(connection => {
 			console.log('In voice channel!');
-		   const randomAudio = array[Math.floor(Math.random() * audioArray.length)];
+		   const randomAudio = audioArray[Math.floor(Math.random() * audioArray.length)];
 		   const dispatcher = connection.play(randomAudio);
 		   console.log('dispatcher volume: '+ dispatcher.volume);
 		   console.log('dispatcher paused: '+ dispatcher.paused);
