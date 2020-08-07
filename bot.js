@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
-//const ytdl = require('ytdl-core');
-const ytdl = require('ytdl-core-discord');
+const ytdl = require('ytdl-core');
 
 const bot = new Discord.Client();
 
@@ -71,7 +70,7 @@ bot.on('message', msg => {
 		}).catch(err => console.log(err));
 	  console.log('After voicechannel');
 	  
-  else if (msg.content === '!citEnd') {
+  }else if (msg.content === '!citEnd') {
 	  msg.reply("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	  //msg.channel.send("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	   var voiceChannel = msg.member.voice.channel;
