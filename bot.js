@@ -62,10 +62,11 @@ bot.on('message', msg => {
 		   const dispatcher = connection.play(randomAudio);
 		   console.log('dispatcher volume: '+ dispatcher.volume);
 		   console.log('dispatcher paused: '+ dispatcher.paused);
+		  connection.on('disconnect', msg.channel.send("Mi sono disconnesso dalla chat vocale"));
 		  //dispatcher.on('finish', finish => voiceChannel.leave());
 		  dispatcher.on('error', error => console.log('Error: ' + error));
 		  dispatcher.on('start', start => console.log('Start: ' + start));
-		  dispatcher.on('speaking', speaking => console.log('Speaking: ' + speaking));
+		  //dispatcher.on('speaking', speaking => console.log('Speaking: ' + speaking));
 		  dispatcher.on('debug', debug => console.log('Debug: ' + debug));
 		  
 		}).catch(err => console.log(err));
