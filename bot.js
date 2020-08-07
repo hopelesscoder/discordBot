@@ -27,7 +27,7 @@ bot.on('message', msg => {
   } else if (msg.content === '!cit') {
 	  msg.reply("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	  //msg.channel.send("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
-	   var voiceChannel = msg.member.voiceChannel;
+	   var voiceChannel = msg.member.voice.channel;
 		voiceChannel.join().then(connection => {
 		   const dispatcher = connection.play('https://www.myinstants.com/media/sounds/germano_mosconi-ma-che-oh.mp3');
 		  dispatcher.on('finish', finish => voiceChannel.leave());
@@ -37,7 +37,7 @@ bot.on('message', msg => {
   }else if (msg.content === '!citStream') {
 	  msg.reply("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	  //msg.channel.send("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
-	   var voiceChannel = msg.member.voiceChannel;
+	   var voiceChannel = msg.member.voice.channel;
 		voiceChannel.join().then(connection => {
 		   const dispatcher = connection.playStream('https://www.myinstants.com/media/sounds/germano_mosconi-ma-che-oh.mp3');
 		  dispatcher.on('finish', finish => voiceChannel.leave());
