@@ -118,4 +118,4 @@ bot.on('message', msg => {
 });
 
 //Stored in config vars on heroku
-bot.login(process.env.BOT_TOKEN);//BOT_TOKEN is the Client Secret
+bot.login(BOT_TOKEN);//BOT_TOKEN is the Client Secret
