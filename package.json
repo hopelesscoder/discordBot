@@ -14,14 +14,18 @@
 
   },
 
+  "engines": {
+    "node": "16.x"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-
-    "discord.js": "12.2.0",
-
-    "request": "2.81.0",
-	"@discordjs/opus": "^0.3.2",
-    "ytdl-core": "^3.2.0"
-
+    "@discordjs/opus": "^0.3.2",
+    "discord.js": "^12.5.3",
+    "ffmpeg-static": "^5.1.0",
+    "request": "^2.88.2",
+    "ytdl-core": "^3.4.2"
   }
 
 }
