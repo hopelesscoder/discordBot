@@ -109,11 +109,15 @@ bot.on('message', msg => {
 	  //msg.reply("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	  //msg.channel.send("Ma chi è chel mona ch-che-che batte la porta e che chiude u-urlando??!");
 	   var voiceChannel = msg.member.voice.channel;
-	   voiceChannel.join().then(connection => {
+	  if(voiceChannel == null){
+	  	msg.reply('Devi essere in un canale vocale');
+	  }else{
+	   	voiceChannel.join().then(connection => {
 		   const randomAudio = audioArray[Math.floor(Math.random() * audioArray.length)];
 		   const dispatcher = connection.play(randomAudio);
 		  dispatcher.on('finish', finish => voiceChannel.leave());
 		}).catch(err => console.log(err));	  
+	  }
   }
 });
 
